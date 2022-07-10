@@ -4,6 +4,14 @@ from app.dao.models.user import User
 
 
 def add_data_to_db(app, db):
+
+    """
+    This function is used to add default users to database with passwords already encoded
+    :param app:
+    :param db:
+
+    """
+
     with app.app_context():
         db.create_all()
 
@@ -19,4 +27,3 @@ def add_data_to_db(app, db):
 
         with db.session.begin():
             db.session.add_all(users)
-
