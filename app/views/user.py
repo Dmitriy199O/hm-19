@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request
 from flask_restx import Namespace, Resource
 from app.container import user_service
 from app.dao.models.user import UserSchema

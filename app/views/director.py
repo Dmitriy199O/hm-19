@@ -17,6 +17,7 @@ class DirectorView(Resource):
         all_directors = director_service.get_all()
 
         return directors_schema.dump(all_directors), 200
+
     @auth_required
     @admin_required
     def post(self):

@@ -1,6 +1,6 @@
-from flask import request, abort
+from flask import request
 from flask_restx import Namespace, Resource
-from app.container import auth_service, user_service
+from app.container import auth_service
 
 auth_ns = Namespace('auth')
 

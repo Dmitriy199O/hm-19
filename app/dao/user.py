@@ -1,5 +1,3 @@
-
-
 from app.dao.models.user import User
 
 
