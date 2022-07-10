@@ -1,5 +1,4 @@
 from app.container import user_service
-from app.create_db import db
 from app.dao.models.user import User
 
 
