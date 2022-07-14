@@ -29,7 +29,7 @@ class MovieView(Resource):
             movies = movie_service.get_all()
         return movies_schema.dump(movies), 200
 
-    @auth_required
+
     @admin_required
     def post(self):
         data = request.get_json()
@@ -44,13 +44,13 @@ class MovieView(Resource):
 @movies_ns.route('/<int:mid>')
 class MovieView(Resource):
     @auth_required
-    @admin_required
+
     def get(self, mid):
         movie = movie_service.get_one(mid)
 
         return movie_schema.dump(movie), 200
 
-    @auth_required
+
     @admin_required
     def put(self, mid):
         data = request.get_json()
@@ -59,7 +59,7 @@ class MovieView(Resource):
 
         return '', 204
 
-    @auth_required
+
     @admin_required
     def patch(self, mid):
         data = request.get_json()
@@ -67,7 +67,7 @@ class MovieView(Resource):
         movie_service.update(data)
         return '', 204
 
-    @auth_required
+
     @admin_required
     def delete(self, mid):
 

@@ -18,12 +18,11 @@ class DirectorView(Resource):
 
         return directors_schema.dump(all_directors), 200
 
-    @auth_required
     @admin_required
     def post(self):
         data = request.get_json()
         director_service.create(data)
-        director_id= data['id']
+        director_id = data['id']
         response = jsonify()
         response.status_code = 201
         response.headers['location'] = f'/{director_id}'
@@ -32,30 +31,27 @@ class DirectorView(Resource):
 
 @director_ns.route('/<int:did>')
 class DirectorView(Resource):
-    @admin_required
+    @auth_required
     def get(self, did):
         director = director_service.get_one(did)
 
         return director_schema.dump(director), 200
 
-    @auth_required
     @admin_required
-    def put(self,did):
+    def put(self, did):
         data = request.json
         data['id'] = did
-        director_service.update(data,did)
+        director_service.update(data, did)
 
         return '', 204
 
-    @auth_required
     @admin_required
     def patch(self, did):
         data = request.json
         data['id'] = did
-        director_service.update(data,did)
+        director_service.update(data, did)
         return '', 204
 
-    @auth_required
     @admin_required
     def delete(self, did):
         director_service.delete(did)

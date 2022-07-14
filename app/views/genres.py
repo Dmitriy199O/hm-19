@@ -18,10 +18,11 @@ class GenreView(Resource):
 
         return genres_schema.dump(all_genres), 200
 
+    @admin_required
     def post(self):
         data = request.get_json()
         genre_service.create(data)
-        genre_id= data['id']
+        genre_id = data['id']
         response = jsonify()
         response.status_code = 201
         response.headers['location'] = f'/{genre_id}'
@@ -36,7 +37,6 @@ class GenreView(Resource):
 
         return genre_schema.dump(genre), 200
 
-    @auth_required
     @admin_required
     def put(self, gid):
         data = request.json
@@ -45,7 +45,6 @@ class GenreView(Resource):
 
         return '', 204
 
-    @auth_required
     @admin_required
     def patch(self, gid):
         data = request.json
@@ -53,7 +52,6 @@ class GenreView(Resource):
         genre_service.update(data)
         return '', 204
 
-    @auth_required
     @admin_required
     def delete(self, gid):
         genre_service.delete(gid)

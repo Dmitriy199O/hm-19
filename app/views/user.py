@@ -29,7 +29,7 @@ class UserView(Resource):
         user = user_service.get_by_username(username)
         return user_schema.dumps(user), 200
 
-    @auth_required
+
     @admin_required
     def put(self, uid):
         data = request.get_json()
